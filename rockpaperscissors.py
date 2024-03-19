@@ -7,13 +7,15 @@ Tie = 0
 game = True
 
 while game:
-    user_input = input("Rock? Paper? or Scissors?")
-    game_options = ["rock", "paper", "scissors"]
-    rock_problem = ["paper", "Paper", 'Scissors', 'scissors']
-    paper_problem = ["rock", 'Rock', "Scissors", 'scissors']
-    scissors_problem = ["Rock", 'Rock', "Paper", "paper"]
+    user_input = input("Rock? Paper? Scissors? Lizard? or Spock?")
+    game_options = ["rock", "paper", "scissors", "lizard", "spock"]
+    rock_problem = ["paper", "Paper", 'Scissors', 'scissors', "lizard", "Lizard", "Spock", "spock"]
+    paper_problem = ["rock", 'Rock', "Scissors", 'scissors', "lizard", "Lizard", "Spock", "spock"]
+    scissors_problem = ["Rock", 'Rock', "Paper", "paper", "lizard", "Lizard", "Spock", "spock"]
+    lizard_problem = ["Rock", 'Rock', "Paper", "paper", "Spock", "spock", "Scissors", "scissors"]
+    spock_problem = ["Rock", 'Rock', "Paper", "paper", "Scissors", "scissors", "Lizard", "lizard"]
     result = ['Win', 'Lose', 'Tie']
-    all_choices = ['rock', 'Rock', 'Paper', 'paper', 'Scissors', 'scissors']
+    all_choices = ['rock', 'Rock', 'Paper', 'paper', 'Scissors', 'scissors', 'lizard', 'Lizard', 'spock', 'Spock']
     game_choice = random.choice(game_options)
 
     if user_input not in all_choices:
@@ -29,12 +31,24 @@ while game:
         if game_choice == "scissors":
             print("Rock smashes scissors! You win!")
             outcome = result[0]
+        elif game_choice == 'lizard':
+            print('Rock crushes lizard! You win!')
+            outcome = result[0]
+        elif game_choice == 'spock':
+            print('Spock vaporizes rock! You lose!')
+            outcome = result[1]
         else:
             print("Paper covers rock! You lose.")
             outcome = result[1]
     elif user_input not in paper_problem:
         if game_choice == "rock":
             print("Paper covers rock! You win!")
+            outcome = result[0]
+        elif game_choice == 'lizard':
+            print('Lizard eats paper! You lose!')
+            outcome = result[1]
+        elif game_choice == 'spock':
+            print('Paper disproves spock! You win!')
             outcome = result[0]
         else:
             print("Scissors cuts paper! You lose.")
@@ -43,8 +57,40 @@ while game:
         if game_choice == "paper":
             print("Scissors cuts paper! You win!")
             outcome = result[0]
+        elif game_choice == 'lizard':
+            print('Scissors decapitates lizard! You win!')
+            outcome = result[0]
+        elif game_choice == 'spock':
+            print('Spock smashes scissors! You lose!')
+            outcome = result[1] 
         else:
             print("Rock smashes scissors! You lose.")
+            outcome = result[1]
+    elif user_input not in lizard_problem:
+        if game_choice == 'rock':
+            print('Rock crushes lizard! You lose!')
+            outcome = result[1]
+        elif game_choice == 'paper':
+            print('Lizard eats paper! You win!')
+            outcome = result[0]
+        elif game_choice == 'scissors':
+            print('Scissors decapitates lizard! You lose!')
+            outcome = result[1]
+        else: 
+            print('Lizard poisons spock! You win!')
+            outcome = result[0]
+    elif user_input not in spock_problem:
+        if game_choice == 'rock':
+            print('Spock vaporizes rock! You win!')
+            outcome = result[0]
+        elif game_choice == 'paper':
+            print('Paper disproves spock! You lose!')
+            outcome = result[1]
+        elif game_choice == 'scissors':
+            print('Spock smashes scissors! You win!')
+            outcome = result[0]
+        else: 
+            print('Lizard poisons spock! You lose!')
             outcome = result[1]
 
     if outcome == result[0]:
